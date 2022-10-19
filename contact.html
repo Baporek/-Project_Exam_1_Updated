@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta name="Contact" content="Contact Page">
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Mono&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="navbar.css">
+	<link rel="stylesheet" href="contact.css">
+	<title>Contact</title>
+</head>
+
+<body>
+	<ul>
+		<li><a href="home.html">Home</a></li>
+		<li><a href="blogList.html">Blog List</a></li>
+		<li><a class="active" href="contact.html">Contact</a></li>
+		<li><a href="about.html">About</a></li>
+	</ul>
+
+	<div class="container">
+		<h1>Contact Us</h1>
+		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt esse dicta provident iure obcaecati. Quos
+			provident explicabo eius adipisci! Quas atque debitis error, quia doloribus nam ullam perspiciatis corrupti
+			minima.</p>
+				<form name="custom_form" id="customForm" onsubmit="return FormValidation()" action="contactReply.html">
+					<div class="form_box">
+						<div class="input-row">
+							<input type="text" name="name" placeholder="Name*">
+							<span class="error">Please Enter Your Name</span>
+						</div>
+						<div class="input-row">
+							<input type="text" name="email" placeholder="Email*">
+							<span class="error">Please Enter Your Email</span>
+						</div>
+						<div class="input-row">
+							<select name="subject">
+								<option value="">Subject*</option>
+								<option value="Design">Design</option>
+								<option value="Support">Support </option>
+								<option value="Marketing">Marketing</option>
+							</select>
+							<span class="error">Please Enter Your Subject</span>
+						</div>
+						<div class="input-row">
+							<textarea cols="40" rows="5" id="message" type="text" placeholder="Message*"></textarea>
+							<span class="error">Please Enter Your Message</span>
+						</div>		
+						<input type="submit" value="Submit" name="">
+					</div>
+				</form>
+			</div>
+	<script src="contact.js"
+</body>
+
+</html>

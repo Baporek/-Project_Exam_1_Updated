@@ -1,0 +1,40 @@
+body {
+    margin: 0;
+    background-color: #575757;
+    font-family: 'Roboto Mono', monospace;
+    color: white;
+}
+
+.return-blog-btn {
+    text-align: center;
+    margin: 25px;
+}
+
+.return-blog-btn a {
+    background-color: #872761;
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 7px;
+    border-radius: 5px;
+}
+
+.return-blog-btn a:hover {
+    background-color: white;
+    color: #872761;
+    border: gray 2px solid;
+    cursor: pointer;
+}
+
+.header p {
+    max-width: 800px;
+    margin: 20px auto;
+    font-size: 25px;
+    padding: 15px;
+    text-align: center;
+}
+
+#showDetails p {
+    max-width: 800px;
+    margin: 20px auto;
+}

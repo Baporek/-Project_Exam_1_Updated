@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="Specific Blog" content="Detail Blog Page">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Mono&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="navbar.css">
+	<link rel="stylesheet" href="specificBlog.css">
+    <title id="title">Specific Blog</title>
+</head>
+<body>
+    <ul>
+		<li><a href="home.html">Home</a></li>
+		<li><a href="blogList.html" class="active">Blog List</a></li>
+		<li><a href="contact.html">Contact</a></li>
+		<li><a href="about.html">About</a></li>
+	</ul>
+
+	<div class="header">
+		<h1 id="heading"></h1>
+		<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat officia ratione, voluptates, laudantium tempore et quisquam doloribus culpa alias eveniet soluta quibusdam modi iusto quidem officiis explicabo. Excepturi, quas repudiandae.</p>
+	</div>
+
+	<div>
+		<div id="showDetails"></div>
+	</div>
+
+    <div class="return-blog-btn"><a href="blogList.html"><i>Back to Blog List</i></a></div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"
+		integrity="sha512-odNmoc1XJy5x1TMVMdC7EMs3IVdItLPlCeL5vSUPN2llYKMJ2eByTTAIiiuqLg+GdNr9hF6z81p27DArRFKT7A=="
+		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	</script>
+	<script>
+		let imgtoShow = '';
+		let id = window.location.href.split("id=").pop();
+		document.getElementById('heading').innerHTML = `Blog Details of # ${id}`;
+
+		axios.get(`https://baporek.com/project_exam_1/wp-json/wp/v2/posts/${id}`)
+        .then(res => { render(res.data) })
+        .catch(err => console.log(err))
+
+		function render(elem) {
+            let img = elem.content.rendered.split('<figcaption>')[0];
+			imgtoShow = img;
+            let caption = elem.content.rendered.split('</figure>')[1];
+
+			document.getElementById('title').innerHTML = elem.title.rendered;	
+
+			let html = `<div>
+                <div onclick='showImg()' style="text-align: center; cursor:pointer" id="img">${img}</div>
+                <div style="text-align: center;">
+                    <h2><u>${elem.title.rendered}</u></h2>
+                    <p>${caption}</p>
+                    <p>Date: <b>${elem.date}</b></p>
+                    <p>Status: <b>${elem.status}</b></p>
+                    <p>Ping Status: <b>${elem.ping_status}</b></p>
+                    <p>Slug: <b>${elem.slug}</b></p>
+                </div>
+            </div>`;
+			document.getElementById('showDetails').innerHTML = html;
+		}
+
+		function showImg() {
+			document.getElementById('img').style.zoom();
+		}
+	</script>
+</body>
+</html>

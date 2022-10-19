@@ -1,0 +1,185 @@
+body {
+  background-color: #575757;
+  font-family: 'Roboto Mono', monospace;
+  color: white;
+}
+.header p {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 30px;
+  padding: 15px;
+}
+
+.h1-LatestPost {
+  text-align: center;
+  color: #662b4e;
+  font-size: 45px;
+  border: 1px solid white;
+  width: 50vh;
+  margin: 40px auto;
+  background-color: rgb(241, 221, 195);
+}
+
+.media-container {
+  position: relative;
+}
+
+/*
+.wp-image-6,
+.wp-image-16,
+.wp-image-8,
+.wp-image-17,
+.wp-image-14,
+.wp-image-11,
+.wp-image-21,
+.wp-image-5,
+.wp-image-13,
+.wp-image-12 {
+  width: 150%;
+  object-position: center;
+}*/
+
+.media-scroller,
+.media-group {
+  display: grid;
+  gap: 0.1rem;
+  grid-auto-flow: column;
+}
+
+.media-scroller {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  grid-auto-columns: 100%;
+  padding: 4rem;
+  scroll-padding-inline: 3rem;
+  margin-left: -60px;
+  margin-bottom: 100px;
+}
+
+.media-group {
+  grid-auto-columns: 1fr;
+}
+
+.media-element {
+  border-radius: 0.25rem;
+  overflow: hidden;
+  width: 100%;
+  height: 600px;
+  text-align: center;
+}
+
+.media-element>img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.media-element>p {
+  width: 70%;
+  margin: 0 0 20px 7vh;
+  text-align: center;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical
+}
+
+.next,
+.previous {
+  display: none;
+  align-items: center;
+  z-index: 10;
+  position: absolute;
+  width: 2rem;
+  padding: 1rem;
+  background: rgb(0 0 0 / 0);
+  opacity: 0;
+}
+
+.previous {
+  left: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.next {
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.media-group:first-child :where(.next, .previous) {
+  display: flex;
+}
+
+.media-scroller:hover :where(.next, .previous) {
+  opacity: 1;
+}
+
+:where(.next, .previous):hover {
+  background: rgb(0 0 0 / 0.3);
+}
+
+:where(.next, .previous)>svg {
+  transition: transform 75ms linear;
+  transform: scale(1);
+}
+
+:where(.next, .previous):hover>svg {
+  transform: scale(1.2);
+}
+
+.media-group:target :where(.next, .previous) {
+  display: flex;
+}
+
+.footer {
+  text-align: center;
+  background-color: rgb(135, 39, 97);
+  color: white;
+  position: fixed;
+  padding: 10px;
+  bottom: 0;
+  width: 100%;
+}
+
+/*
+@media screen and (max-width: 520px) {
+  .media-element {
+    border-radius: 0.25rem;
+    overflow: hidden;
+    width: 80px;
+    height: 120px;
+    max-width: 80px
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .media-element {
+    border-radius: 0.25rem;
+    overflow: hidden;
+    width: 120px;
+    height: 170px;
+    max-width: 120px
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .media-element {
+    border-radius: 0.25rem;
+    overflow: hidden;
+    width: 150px;
+    height: 200px;
+    max-width: 150px
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .media-element {
+    border-radius: 0.25rem;
+    overflow: hidden;
+    width: 300px;
+    height: 450px;
+    max-width: 300px
+  }
+}*/

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="Blog List" content="Blog List Page">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" href="blogList.css">
+    <title>Blog List</title>
+</head>
+
+<body>
+    <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a class="active" href="blogList.html">Blog List</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="about.html">About</a></li>
+    </ul>
+
+    <div class="container">
+        <div class="header">
+            <h1>Blog List</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus perspiciatis rerum praesentium atque quas eaque impedit, consequatur voluptate vero beatae repellat ipsa saepe soluta.</p>
+        </div>
+        <button class="btn" onclick="sortById()" style="float: right; margin-right: 10px">Sort By Id</button>
+        
+
+        <div>
+            <div id="render"></div>
+        </div>
+    </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"
+    integrity="sha512-odNmoc1XJy5x1TMVMdC7EMs3IVdItLPlCeL5vSUPN2llYKMJ2eByTTAIiiuqLg+GdNr9hF6z81p27DArRFKT7A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</script>
+
+<script>
+    function getData() {
+        axios.get('https://baporek.com/project_exam_1/wp-json/wp/v2/posts')
+        .then(res => { render(res.data) })
+        .catch(err => console.log(err))
+    }
+    getData();
+
+    function render(arr) {
+        console.log(arr);
+        let html = ``;
+        arr.forEach((elem,idx) => {
+            let caption = elem.content.rendered.split('</p>')[0];
+            let img = elem.content.rendered.split('</p>')[1].split('is-cropped">')[1].split('large">')[1].split('</figure>')[0];
+            let title = elem.title.rendered;
+
+            html += `<div class="elem" title="Click for more details" onclick="showDetails('${elem.id}')">
+                <div class='imgContainer'>
+                    <h2>${idx+1}. Blog Post # ${elem.id}</h2>
+                    ${img}
+                </div>
+                <div class='caption'>
+                    <p><b>${title}</b></p>
+                    <p>${caption}</p>
+                    <p>Date: <b>${elem.date}</b></p>
+                    <p>Status: <b>${elem.status}</b></p>
+                </div>
+            </div>`;
+        });
+        document.getElementById('render').innerHTML = html;
+    }
+
+    function showDetails(id) {
+        window.location.href = `specificBlog.html?id=${id}`;
+    }
+
+
+    function sortById() {
+        axios.get('https://baporek.com/project_exam_1/wp-json/wp/v2/posts')
+        .then(res => { 
+            let sorted = res.data.sort((a,b) => a.id - b.id);
+            render(sorted);
+        })
+        .catch(err => console.log(err))
+    }
+</script>
+
+</html>

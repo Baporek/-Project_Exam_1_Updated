@@ -1,0 +1,93 @@
+body {
+    margin: 0;
+    background-color: #575757;
+    font-family: 'Roboto Mono', monospace;
+    color: white;
+}
+
+/* .container {
+    max-height: 1000px;
+} */
+
+.header p {
+    max-width: 800px;
+    margin: 20px auto;
+    font-size: 26px;
+    padding: 15px;
+    text-align: center;
+}
+
+.elem {
+    border: 1px solid grey;
+    border-radius: 10px;
+    margin: 10px;
+    overflow-x: hidden;
+    text-align: center;
+}
+
+.elem:hover {
+    background-color: #685e5e;
+    cursor: pointer;
+}
+
+.imgContainer {
+    border-radius: 10px;
+    width: 100%;
+    clear: right;
+}
+
+.caption {
+    text-align: center;
+    width: 600px;
+    margin: 20px auto;
+    /* float: right;*/
+}
+
+.searchBar {
+    margin-top: 5%;
+    text-align: center;
+
+}
+
+#search {
+    width: 30%;
+    height: 28px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.btn {
+    height: 34px;
+    width: 75px;
+    background-color: #872761;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+@media screen and (min-width: 100px) {
+    .searchBar {
+        margin: 50px;
+    }
+
+    .caption {
+        text-align: center;
+        max-width: 400px;
+        /* float: left;*/
+    }
+}
+
+@media screen and (max-width: 490px) {
+    .caption {
+        text-align: center;
+        width: 290px;
+    }
+}
+
+@media screen and (max-width: 390px) {
+    .caption {
+        text-align: center;
+        width: 230px;
+    }
+}
